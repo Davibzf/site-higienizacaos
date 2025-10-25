@@ -3,419 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Higienização Pro - Serviços Profissionais de Limpeza</title>
-    <style>
-        /* Reset e configurações básicas */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary-color: #2c5aa0;
-            --secondary-color: #f8f9fa;
-            --accent-color: #28a745;
-            --text-color: #333;
-            --light-text: #6c757d;
-            --white: #fff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--secondary-color);
-        }
-        
-        /* Header e navegação */
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 0;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), #1e3a8a);
-            color: var(--white);
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Botões */
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: center;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: var(--white);
-        }
-        
-        .btn-primary:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary-color);
-        }
-        
-        .btn-block {
-            display: block;
-            width: 100%;
-        }
-        
-        /* Seções */
-        section {
-            padding: 4rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .section-title p {
-            color: var(--light-text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Cards de preços */
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .pricing-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            position: relative;
-            transition: transform 0.3s;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .popular-tag {
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        .price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-        }
-        
-        .price span {
-            font-size: 1rem;
-            color: var(--light-text);
-        }
-        
-        .features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .features li:last-child {
-            border-bottom: none;
-        }
-        
-        /* Formulário */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* Depoimentos */
-        .testimonials-section {
-            background-color: #f1f5f9;
-        }
-        
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .author-info h3 {
-            margin-bottom: 0.25rem;
-            color: var(--primary-color);
-        }
-        
-        .author-info p {
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 3rem 0 1.5rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--white);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            section {
-                padding: 3rem 0;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-        }
-    </style>
+    <meta name="description" content="Higienização profissional de estofados. Recupere o conforto e a beleza dos seus móveis. Orçamento gratuito.">
+    <meta name="keywords" content="higienização, estofados, limpeza, sofá, cadeira, colchão">
+    <title>HigienizaTop - Higienização Profissional de Estofados</title>
+    
+    <!-- CSS Local (evita bloqueios externos) -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="HigienizaTop - Higienização Profissional de Estofados">
+    <meta property="og:description" content="Recupere o conforto e a beleza dos seus móveis com nossa higienização profissional.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.higienizatop.com.br">
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "HigienizaTop",
+      "description": "Higienização profissional de estofados",
+      "url": "https://www.higienizatop.com.br",
+      "telephone": "+55-85-99194-5040",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. Santa Rita, 170 - Capuã",
+        "addressLocality": "Caucaia",
+        "addressRegion": "CE",
+        "postalCode": "61615-545"
+      },
+      "openingHours": "Mo-Fr 08:00-18:00, Sa 08:00-12:00",
+      "areaServed": "Caucaia e Região",
+      "serviceType": "Higienização de estofados"
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
-    <header role="banner">
+    <header id="header" role="banner">
         <div class="container">
-            <nav class="nav-container" aria-label="Navegação principal">
-                <a href="#" class="logo">
-                    <div class="logo-icon" aria-hidden="true">H</div>
-                    Higienização Pro
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#home">Início</a></li>
+            <a href="#home" class="logo">
+                <div class="logo-icon" aria-hidden="true">H</div>
+                <span>Higieniza<span class="logo-highlight">Top</span></span>
+            </a>
+            <nav id="nav" aria-label="Navegação principal">
+                <button id="btn-mobile" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+                    <span id="hamburger"></span>
+                </button>
+                <ul id="menu" role="menu">
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#como-funciona">Funcionamento</a></li>
+                    <li><a href="#porque-escolher">Diferenciais</a></li>
                     <li><a href="#precos">Preços</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
@@ -425,143 +68,377 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="container">
-                <h1>Higienização Profissional de Estofados</h1>
-                <p>Recupere a beleza e prolongue a vida útil dos seus móveis com nossos serviços especializados</p>
-                <div class="hero-buttons">
-                    <a href="#contato" class="btn btn-primary">Solicitar Orçamento</a>
-                    <a href="#contato" class="btn btn-outline">Agendar Visita</a>
-                </div>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Transforme seus estofados, <span class="highlight">recupere o conforto</span></h1>
+                <p>Serviço profissional de higienização que elimina ácaros, bactérias e manchas, devolvendo a beleza e a saúde aos seus móveis.</p>
+                <a href="#contato" class="btn btn-primary">Solicitar Orçamento</a>
             </div>
         </section>
 
         <!-- Serviços -->
-        <section id="servicos">
+        <section id="servicos" class="section">
             <div class="container">
-                <div class="section-title">
-                    <h2>Nossos Serviços</h2>
-                    <p>Utilizamos técnicas avançadas e produtos ecológicos para garantir os melhores resultados</p>
+                <h2 class="section-title">Nossos Serviços</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <div class="icon-placeholder" aria-hidden="true">🛋️</div>
+                        </div>
+                        <h3>Limpeza de Sofás</h3>
+                        <p>Higienização completa de sofás de todos os tamanhos e materiais.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <div class="icon-placeholder" aria-hidden="true">🛏️</div>
+                        </div>
+                        <h3>Limpeza de Colchões</h3>
+                        <p>Eliminação de ácaros e bactérias para um sono mais saudável.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <div class="icon-placeholder" aria-hidden="true">🪑</div>
+                        </div>
+                        <h3>Limpeza de Cadeiras</h3>
+                        <p>Cadeiras de escritório, restaurante e residenciais.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <div class="icon-placeholder" aria-hidden="true">🚗</div>
+                        </div>
+                        <h3>Limpeza Automotiva</h3>
+                        <p>Higienização de bancos e estofados de veículos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <div class="icon-placeholder" aria-hidden="true">🧹</div>
+                        </div>
+                        <h3>Limpeza de Tapetes</h3>
+                        <p>Limpeza profunda de tapetes e carpetes.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <div class="icon-placeholder" aria-hidden="true">🛡️</div>
+                        </div>
+                        <h3>Proteção Antimanchas</h3>
+                        <p>Aplicação de produto protetor contra manchas futuras.</p>
+                    </div>
                 </div>
-                
-                <div class="pricing-cards">
+            </div>
+        </section>
+
+        <!-- Como Funciona -->
+        <section id="como-funciona" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Funcionamento</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Agendamento</h3>
+                            <p>Entre em contato e agende uma visita para avaliação.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Avaliação</h3>
+                            <p>Nossos técnicos avaliam o estado dos seus estofados.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Higienização</h3>
+                            <p>Realizamos a limpeza profunda com produtos especiais.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Entrega</h3>
+                            <p>Seus estofados limpos e prontos para uso em pouco tempo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por que nos Escolher -->
+        <section id="porque-escolher" class="section">
+            <div class="container">
+                <h2 class="section-title">Diferenciais</h2>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon" aria-hidden="true">🏆</div>
+                        <h3>Garantia de Satisfação</h3>
+                        <p>Oferecemos garantia em todos os nossos serviços.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon" aria-hidden="true">🌿</div>
+                        <h3>Produtos Ecológicos</h3>
+                        <p>Utilizamos produtos biodegradáveis e não tóxicos.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon" aria-hidden="true">👔</div>
+                        <h3>Técnicos Especializados</h3>
+                        <p>Equipe treinada e com experiência no mercado.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon" aria-hidden="true">⚡</div>
+                        <h3>Atendimento Rápido</h3>
+                        <p>Agendamento flexível e serviço ágil.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabela de Preços -->
+        <section id="precos" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Nossos Planos</h2>
+                <div class="pricing">
                     <div class="pricing-card">
-                        <h3>Limpeza Básica</h3>
+                        <h3>Básico</h3>
                         <div class="price">R$ 99<span>/peça</span></div>
-                        <ul class="features">
-                            <li>Limpeza superficial</li>
-                            <li>Produtos básicos</li>
-                            <li>Proteção antimanchas</li>
-                            <li>Garantia de 30 dias</li>
+                        <ul>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Limpeza superficial</li>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Produtos básicos</li>
+                            <li><span class="cross-icon" aria-hidden="true">✗</span> Proteção antimanchas</li>
+                            <li><span class="cross-icon" aria-hidden="true">✗</span> Garantia estendida</li>
                         </ul>
                         <a href="#contato" class="btn btn-outline">Agendar</a>
                     </div>
-                    
-                    <div class="pricing-card">
+                    <div class="pricing-card featured">
                         <div class="popular-tag">Mais Popular</div>
-                        <h3>Limpeza Completa</h3>
+                        <h3>Intermediário</h3>
                         <div class="price">R$ 149<span>/peça</span></div>
-                        <ul class="features">
-                            <li>Limpeza profunda</li>
-                            <li>Produtos premium</li>
-                            <li>Proteção antimanchas</li>
-                            <li>Desodorização</li>
-                            <li>Garantia de 60 dias</li>
+                        <ul>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Limpeza profunda</li>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Produtos premium</li>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Proteção antimanchas</li>
+                            <li><span class="cross-icon" aria-hidden="true">✗</span> Garantia estendida</li>
                         </ul>
                         <a href="#contato" class="btn btn-primary">Agendar</a>
                     </div>
-                    
                     <div class="pricing-card">
-                        <h3>Limpeza Premium</h3>
+                        <h3>Premium</h3>
                         <div class="price">R$ 199<span>/peça</span></div>
-                        <ul class="features">
-                            <li>Limpeza ultra profunda</li>
-                            <li>Produtos ecológicos</li>
-                            <li>Proteção antimanchas premium</li>
-                            <li>Desodorização e sanitização</li>
-                            <li>Garantia de 90 dias</li>
+                        <ul>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Limpeza ultra profunda</li>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Produtos ecológicos</li>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Proteção antimanchas</li>
+                            <li><span class="check-icon" aria-hidden="true">✓</span> Garantia estendida</li>
                         </ul>
                         <a href="#contato" class="btn btn-outline">Agendar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria -->
+        <section id="galeria" class="section">
+            <div class="container">
+                <h2 class="section-title">Galeria</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <div class="image-placeholder" aria-label="Sofá antes e depois da limpeza">🛋️ Antes/Depois</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-placeholder" aria-label="Colchão higienizado">🛏️ Colchão Limpo</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-placeholder" aria-label="Cadeira de escritório limpa">🪑 Cadeira Limpa</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-placeholder" aria-label="Estofado automotivo higienizado">🚗 Banco Automotivo</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-placeholder" aria-label="Tapete limpo">🧹 Tapete Limpo</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-placeholder" aria-label="Processo de higienização">🔧 Processo</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Depoimentos -->
-        <section class="testimonials-section">
+        <section id="depoimentos" class="section bg-light">
             <div class="container">
-                <div class="section-title">
-                    <h2>O que nossos clientes dizem</h2>
-                    <p>Confira a opinião de quem já contratou nossos serviços</p>
-                </div>
-                
+                <h2 class="section-title">Depoimentos</h2>
                 <div class="testimonials">
-                    <div class="testimonial">
-                        <p class="testimonial-text">"Serviço excelente! Meu sofá ficou como novo. A equipe foi muito profissional e pontual. Recomendo!"</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Serviço excelente! Meu sofá ficou como novo. A equipe foi muito profissional e pontual."</p>
+                        </div>
                         <div class="testimonial-author">
-                            <div class="author-avatar" aria-hidden="true">M</div>
-                            <div class="author-info">
-                                <h3>Maria Silva</h3>
-                                <p>Residencial - São Paulo</p>
-                            </div>
+                            <h3>Maria Silva</h3>
+                            <span>Caucaia, CE</span>
                         </div>
                     </div>
-                    
-                    <div class="testimonial">
-                        <p class="testimonial-text">"Contratei para limpar as poltronas do escritório e superou minhas expectativas. Voltaremos a contratar!"</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Adorei o resultado! Os produtos não têm cheiro forte e minha alergia melhorou muito depois da limpeza do colchão."</p>
+                        </div>
                         <div class="testimonial-author">
-                            <div class="author-avatar" aria-hidden="true">J</div>
-                            <div class="author-info">
-                                <h3>João Santos</h3>
-                                <p>Comercial - Rio de Janeiro</p>
-                            </div>
+                            <h3>João Santos</h3>
+                            <span>Caucaia, CE</span>
                         </div>
                     </div>
-                    
-                    <div class="testimonial">
-                        <p class="testimonial-text">"Rápido, eficiente e com ótimo custo-benefício. Meus estofados nunca estiveram tão limpos!"</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Atendimento rápido e preço justo. Recomendo para todos que querem higienizar seus estofados com qualidade."</p>
+                        </div>
                         <div class="testimonial-author">
-                            <div class="author-avatar" aria-hidden="true">A</div>
-                            <div class="author-info">
-                                <h3>Ana Oliveira</h3>
-                                <p>Residencial - Belo Horizonte</p>
-                            </div>
+                            <h3>Ana Oliveira</h3>
+                            <span>Caucaia, CE</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contato -->
-        <section id="contato">
+        <!-- FAQ -->
+        <section id="faq" class="section">
             <div class="container">
-                <div class="section-title">
-                    <h2>Entre em Contato</h2>
-                    <p>Solicite um orçamento ou agende uma visita técnica sem compromisso</p>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Quanto tempo leva para o estofado secar?
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>O tempo de secagem varia de 4 a 8 horas, dependendo do tecido, ventilação e condições climáticas. Recomendamos manter o ambiente bem ventilado para acelerar o processo.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Os produtos utilizados são seguros?
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim, utilizamos produtos biodegradáveis, hipoalergênicos e não tóxicos, seguros para crianças, idosos e pessoas com alergias.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Vocês removem manchas difíceis?
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Removemos a maioria das manchas comuns como café, vinho, gordura e tinta. A eficácia depende do tipo de mancha, tempo e material do estofado.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Preciso me ausentar durante o serviço?
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Não é necessário. Nossa equipe é treinada para trabalhar com discrição e eficiência, permitindo que você continue suas atividades normais.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Com que frequência devo higienizar meus estofados?
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Recomendamos higienização a cada 6 a 12 meses, dependendo do uso, presença de animais e pessoas alérgicas no ambiente.</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nome completo</label>
-                            <input type="text" id="name" class="form-control" required>
+            </div>
+        </section>
+
+        <!-- Sobre Nós -->
+        <section id="sobre" class="section bg-light">
+            <div class="container">
+                <div class="about">
+                    <div class="about-content">
+                        <h2 class="section-title">Sobre Nós</h2>
+                        <p>A HigienizaTop atua no mercado há mais de 10 anos, oferecendo serviços especializados de higienização de estofados. Nossa missão é proporcionar ambientes mais saudáveis e confortáveis através da limpeza profissional.</p>
+                        <p>Contamos com uma equipe de técnicos treinados e equipamentos de última geração, utilizando produtos ecológicos que garantem resultados eficazes sem agredir o meio ambiente.</p>
+                        <p>Nosso compromisso é com a qualidade, pontualidade e satisfação total dos nossos clientes.</p>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-placeholder" aria-label="Logo da HigienizaTop">🏢 Logo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="section">
+            <div class="container">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="contact">
+                    <div class="contact-info">
+                        <h3>Informações de Contato</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true">📍</div>
+                            <div>
+                                <h4>Endereço</h4>
+                                <p>R. Santa Rita, 170 - Capuã<br>Caucaia - CE, 61615-545</p>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" class="form-control" required>
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true">📞</div>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>(85) 99194-5040</p>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Telefone</label>
-                            <input type="tel" id="phone" class="form-control" required>
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true">✉️</div>
+                            <div>
+                                <h4>E-mail</h4>
+                                <p>contato@higienizatop.com.br</p>
+                            </div>
                         </div>
-                        
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true">🕒</div>
+                            <div>
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço Desejado *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="sofa">Limpeza de Sofá</option>
+                                <option value="colchao">Limpeza de Colchão</option>
+                                <option value="cadeira">Limpeza de Cadeira</option>
+                                <option value="automotivo">Limpeza Automotiva</option>
+                                <option value="tapete">Limpeza de Tapete</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Data Preferida</label>
+                            <input type="date" id="date" name="date">
+                        </div>
                         <div class="form-group">
                             <label for="message">Mensagem</label>
-                            <textarea id="message" class="form-control" placeholder="Descreva o serviço desejado e as peças a serem higienizadas..."></textarea>
+                            <textarea id="message" name="message" rows="5"></textarea>
                         </div>
-                        
                         <button type="submit" class="btn btn-primary btn-block">Enviar Mensagem</button>
                     </form>
                 </div>
@@ -570,140 +447,78 @@
     </main>
 
     <!-- Footer -->
-    <footer role="contentinfo">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Higienização Pro</h3>
-                    <p>Especialistas em limpeza e conservação de estofados há mais de 10 anos.</p>
+                    <a href="#home" class="logo">
+                        <div class="logo-icon" aria-hidden="true">H</div>
+                        <span>Higieniza<span class="logo-highlight">Top</span></span>
+                    </a>
+                    <p>Higienização profissional de estofados com qualidade, agilidade e compromisso com o meio ambiente.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><span aria-hidden="true">📘</span></a>
+                        <a href="#" aria-label="Instagram"><span aria-hidden="true">📷</span></a>
+                        <a href="https://wa.me/5585991945040" aria-label="WhatsApp"><span aria-hidden="true">💬</span></a>
+                    </div>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Início</a></li>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
                         <li><a href="#servicos">Serviços</a></li>
                         <li><a href="#precos">Preços</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
-                
+                <div class="footer-section">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#servicos">Limpeza de Sofás</a></li>
+                        <li><a href="#servicos">Limpeza de Colchões</a></li>
+                        <li><a href="#servicos">Limpeza de Cadeiras</a></li>
+                        <li><a href="#servicos">Limpeza Automotiva</a></li>
+                        <li><a href="#servicos">Limpeza de Tapetes</a></li>
+                    </ul>
+                </div>
                 <div class="footer-section">
                     <h3>Contato</h3>
-                    <ul class="footer-links">
-                        <li>Tel: (11) 9999-9999</li>
-                        <li>Email: contato@higienizacaopro.com</li>
-                        <li>Horário: Seg-Sex: 8h-18h</li>
+                    <ul>
+                        <li><span aria-hidden="true">📍</span> R. Santa Rita, 170 - Capuã, CE</li>
+                        <li><span aria-hidden="true">📞</span> (85) 99194-5040</li>
+                        <li><span aria-hidden="true">✉️</span> contato@higienizatop.com.br</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Higienização Pro. Todos os direitos reservados.</p>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2025</span> HigienizaTop — Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Aguarda o DOM carregar completamente
-        document.addEventListener('DOMContentLoaded', function() {
-            // Form submission handling
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Validação básica
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const phone = document.getElementById('phone').value;
-                    
-                    if (!name || !email || !phone) {
-                        alert('Por favor, preencha todos os campos obrigatórios.');
-                        return;
-                    }
-                    
-                    // Simulação de envio
-                    alert(`Obrigado, ${name}! Sua mensagem foi enviada com sucesso. Entraremos em contato em breve.`);
-                    
-                    // Reset form
-                    this.reset();
-                });
-            }
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Atualiza a URL sem recarregar a página
-                        history.pushState(null, null, targetId);
-                    }
-                });
-            });
-            
-            // Adiciona classe ativa à navegação durante o scroll
-            window.addEventListener('scroll', function() {
-                const sections = document.querySelectorAll('section');
-                const navLinks = document.querySelectorAll('.nav-links a');
-                
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= sectionTop - 100) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-            
-            // Animações de entrada para elementos
-            function animateOnScroll() {
-                const elements = document.querySelectorAll('.pricing-card, .testimonial');
-                
-                elements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-            
-            // Configura animações iniciais
-            document.querySelectorAll('.pricing-card, .testimonial').forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            // Adiciona evento de scroll para animações
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // Executa uma vez no carregamento para elementos já visíveis
-            animateOnScroll();
-        });
-    </script>
+    <!-- Botões de Contato Fixos -->
+    <div class="fixed-contact">
+        <a href="tel:85991945040" class="contact-btn phone-btn" aria-label="Ligar">
+            <span aria-hidden="true">📞</span>
+        </a>
+        <a href="https://wa.me/5585991945040" class="contact-btn whatsapp-btn" aria-label="WhatsApp">
+            <span aria-hidden="true">💬</span>
+        </a>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" aria-label="Fechar">&times;</span>
+            <div class="modal-icon" aria-hidden="true">✅</div>
+            <h2>Mensagem Enviada!</h2>
+            <p>Obrigado pelo seu contato. Em breve retornaremos com mais informações.</p>
+            <button class="btn btn-primary" id="close-confirmation">Fechar</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
 </body>
 </html>
